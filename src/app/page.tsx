@@ -13,6 +13,7 @@ export default function Home() {
   const [started, setStarted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingjawaban, setLoadingJawaban] = useState(false);
+  const [allFeedback, setAllFeedback] = useState<string[]>([]);
 
   const startInterview = async () => {
     setLoading(true);
@@ -37,6 +38,7 @@ export default function Home() {
     });
     const data = await res.json();
     setFeedback(data.result);
+    setAllFeedback((prev) => [...prev, data.result]);
     setLoadingJawaban(false);
   };
 
@@ -44,6 +46,17 @@ export default function Home() {
     setAnswer("");
     setFeedback("");
     setCurrent((prev) => prev + 1);
+  };
+
+  const calculateScore = () => {
+    let total = 0;
+    allFeedback.forEach((fb) => {
+      const match = fb.match(/(\d+)\/10/);
+      if (match) {
+        total += parseInt(match[1]);
+      }
+    });
+    return Math.round(total / allFeedback.length || 0);
   };
 
   return (
@@ -127,6 +140,14 @@ export default function Home() {
               <div className="text-center">
                 <p className="font-bold text-green-600 text-lg">
                   Interview Selesai!
+                </p>
+
+                <p className="text-gray-700">Skor Akhir Kamu:</p>
+                <p className="text-3xl font-bold text-green-600">
+                  {calculateScore()}/10
+                </p>
+                <p className="text-sm text-gray-500">
+                  Terus latihan untuk meningkatkan performa kamu !!
                 </p>
               </div>
             )}
