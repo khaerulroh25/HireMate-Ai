@@ -5,14 +5,14 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { role } = body;
 
-    const prompt = `Buat 3 pertanyaan interview untuk posisi ${role}.
+    const prompt = `Buat 4 pertanyaan interview untuk posisi ${role}.
 
     PENTING:
     - Gunakan Bahasa Indonesia
     - Jangan tambahkan penjelasan apapun
     - Format HARUS berupa JSON seperti ini:
 
-    ["Pertanyaan 1", "Pertanyaan 2", "Pertanyaan 3"]
+    ["Pertanyaan 1", "Pertanyaan 2", "Pertanyaan 3", "Pertanyaan 4]
     `;
 
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
