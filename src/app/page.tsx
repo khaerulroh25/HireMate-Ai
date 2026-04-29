@@ -16,6 +16,10 @@ export default function Home() {
   const [allFeedback, setAllFeedback] = useState<string[]>([]);
 
   const startInterview = async () => {
+    if (!role.trim()) {
+      alert("Role tidak boleh kosong!");
+      return;
+    }
     setLoading(true);
     const res = await fetch("/api/questions", {
       method: "POST",
@@ -109,7 +113,7 @@ export default function Home() {
 
             <button
               onClick={submitAnswer}
-              className="w-full bg-green-700 hover:bg-green-600 text-white py-2 rounded-lg transition"
+              className="w-full bg-blue-700 hover:bg-blue-500 text-white py-2 rounded-lg transition"
             >
               Submit Jawaban
             </button>
