@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   return (
-    <main className="p-6 min-h-screen bg-gray-50 flex items-center justify-center">
+    <main className="p-6 min-h-screen bg-blue-300 flex items-center justify-center">
       <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-xl space-y-4">
         <h1 className="text-3xl font-bold text-center text-blue-600">
           HireMate AI
@@ -109,7 +109,7 @@ export default function Home() {
 
             <button
               onClick={submitAnswer}
-              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition"
+              className="w-full bg-green-700 hover:bg-green-600 text-white py-2 rounded-lg transition"
             >
               Submit Jawaban
             </button>
@@ -130,7 +130,7 @@ export default function Home() {
             {feedback && current < questions.length - 1 && (
               <button
                 onClick={nextQuestion}
-                className="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 rounded-lg transition"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition"
               >
                 Pertanyaan selanjutnya
               </button>
