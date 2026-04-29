@@ -5,6 +5,12 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { role } = body;
 
+    if (!role || role.trim() === "") {
+      return NextResponse.json({
+        error: "Role is required",
+      });
+    }
+
     const prompt = `Buat 4 pertanyaan interview untuk posisi ${role}.
 
     PENTING:
